@@ -9,3 +9,5 @@ erl_crash.dump
 /config/prod.secret.exs
 /rel
 
+#Mac users
+.DS_Store
