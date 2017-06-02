@@ -20,7 +20,11 @@ defmodule Jod.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Jod do
-  #   pipe_through :api
-  # end
+   scope "/api", Jod do
+     pipe_through :api
+
+    scope "/v1" do
+      post "/registrations", RegistrationController, :create
+    end
+   end
 end
