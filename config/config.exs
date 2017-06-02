@@ -22,6 +22,17 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+# Configues Guardian - an authentication framework for use with Elixir applications.
+config :guardian, Guardian,
+# allowed_algos: ["HS512"], # optional
+# verify_module: Guardian.JWT,  # optional
+  issuer: "Jod",
+  ttl: { 3, :days },
+  allowed_drift: 2000,
+  verify_issuer: true, # optional
+  secret_key: "ZxyaRIz2msd5i5ucoM+KCfUuFM32ej70z2O+uGr+IOCBQV3ypcXtYMYh0M1qAS2I",
+  serializer: MyApp.GuardianSerializer
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
