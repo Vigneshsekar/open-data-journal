@@ -34,5 +34,5 @@ config :guardian, Guardian,
   ttl: { 30, :days },
   allowed_drift: 2000,
   verify_issuer: true, # optional
-  secret_key: <guardian secret key>,
-  serializer: MyApp.GuardianSerializer
+  secret_key: "ftie+gQEvSTh+9z8cnAZrBj9q1j/RTM2DrW66a3t61kTGMMKgVRfleZ3IQuPtCqu",
+  serializer: Jod.GuardianSerializer
