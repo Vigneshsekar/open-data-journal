@@ -25,3 +25,14 @@ config :logger, :console,
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
+
+# Configures Guardian - an authentication framework for use with elixir applications
+config :guardian, Guardian,
+  allowed_algos: ["HS512"], # optional
+  verify_module: Guardian.JWT,  # optional
+  issuer: "Jod",
+  ttl: { 30, :days },
+  allowed_drift: 2000,
+  verify_issuer: true, # optional
+  secret_key: "ftie+gQEvSTh+9z8cnAZrBj9q1j/RTM2DrW66a3t61kTGMMKgVRfleZ3IQuPtCqu",
+  serializer: Jod.GuardianSerializer
