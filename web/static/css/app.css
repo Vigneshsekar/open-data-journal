@@ -1,1 +1,9 @@
-/* This file is for your main application css. */
+.brand-logo{
+	font-weight: 400;
+	margin-left: 100px;
+}
+
+nav ul li a{
+  color: grey;
+} 
+
