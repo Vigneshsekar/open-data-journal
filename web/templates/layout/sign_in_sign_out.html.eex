@@ -1,13 +1,13 @@
 <%= if logged_in?(@conn) do %>
-  <%= link "Sign out", to: session_path(@conn, :delete, :access),
-      method: :delete, class: "btn btn-danger" %>
-  <div>
-    <%= current_user(@conn).email %>
-  </div>
+  <li><%= link to: session_path(@conn, :delete, :access), 
+                       method: :delete, class: "waves-effect waves-teal btn-flat" do %>
+       Sign Out
+      <% end %>
+  </li>
 
 <% else %>
-  <%= link "Create new accouunt", to: user_path(@conn, :new),
-      class: "btn btn-danger" %>
-  <%= link "Sign in", to: session_path(@conn, :new),
-      class: "btn btn-danger" %>
+  <li><%= link "Create new accouunt", to: user_path(@conn, :new),
+      class: "btn" %></li>
+  <li><%= link "Sign in", to: session_path(@conn, :new),
+      class: "btn" %></li>
 <% end %>
