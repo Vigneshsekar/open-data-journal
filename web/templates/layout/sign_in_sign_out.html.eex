@@ -1,9 +1,5 @@
 <%= if logged_in?(@conn) do %>
-  <li><%= link to: session_path(@conn, :delete, :access), 
-                       method: :delete, class: "waves-effect waves-teal btn-flat" do %>
-       Sign Out
-      <% end %>
-  </li>
+  <li><%= link("Sign out", to: "/sessions/delete", method: "delete") %></li>
 
 <% else %>
   <li><%= link "Create new accouunt", to: user_path(@conn, :new),
