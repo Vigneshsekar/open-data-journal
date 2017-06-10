@@ -2,6 +2,9 @@
 	font-weight: 400;
 	margin-left: 100px;
 }
+.site-header {
+  z-index: 1;
+}
 
 nav ul li a{
   color: grey;

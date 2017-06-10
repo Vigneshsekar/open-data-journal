@@ -3,7 +3,7 @@
 
 <% else %>
   <li><%= link "Create new accouunt", to: user_path(@conn, :new),
-      class: "btn" %></li>
+      class: "" %></li>
   <li><%= link "Sign in", to: session_path(@conn, :new),
-      class: "btn" %></li>
+      class: "" %></li>
 <% end %>

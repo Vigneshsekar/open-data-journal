@@ -19,7 +19,7 @@ defmodule Jod.UserController do
         conn
         |> Jod.Auth.login(user) #Sign-in user on account creation
         |> put_flash(:info, "User created!")
-        |> redirect(to: user_path(conn, :index))
+        |> redirect(to: page_path(conn, :index))
       {:error, changeset} -> 
         conn
         |> render("new.html", changeset: changeset)
