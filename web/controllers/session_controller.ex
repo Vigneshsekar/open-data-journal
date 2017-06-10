@@ -12,7 +12,7 @@ defmodule Jod.SessionController do
       {:ok, conn} ->
         logged_in_user = Guardian.Plug.current_resource(conn)
         conn
-        |> put_flash(:info, "Innlogget")
+        |> put_flash(:info, "Logged In")
         |> redirect(to: user_path(conn, :show, logged_in_user))
       
       {:error, _reason, conn} ->
@@ -22,9 +22,10 @@ defmodule Jod.SessionController do
     end
   end
 
-  def delete(conn, _) do
+  def delete(conn, _params) do
     conn
-    |> Guardian.Plug.sign_out
+    |> Guardian.Plug.sign_out(conn)
+    |> put_flash(:info, "Logged out successfully.")
     |> redirect(to: "/")
   end
 

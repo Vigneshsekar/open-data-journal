@@ -7,31 +7,28 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Jod!</title>
+    <title>Journal of Open Data</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/materialize.css") %>">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <%= render "sign_in_sign_out.html", conn: @conn %>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
+    <%= render "site_header.html", conn: @conn %>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    
 
-      <main role="main">
+    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+     <main role="main">
         <%= render @view_module, @view_template, assigns %>
       </main>
 
     <div id="root"></div> <!-- To be replaced with the container div -->
-
-    </div> <!-- /container -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/materialize.js") %>"></script>
   </body>
 </html>

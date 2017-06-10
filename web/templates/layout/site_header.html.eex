@@ -1,6 +1,6 @@
 <nav class="site-header">
-	<div class="nav-wrapper grey lighten-5">
-		<a href="#!" class="brand-logo grey-text">The Journal of Open Data</a>
+	<div class="nav-wrapper white lighten-5">
+		<a href="/" class="brand-logo grey-text">The Journal of Open Data</a>
 		<ul class="right hide-on-med-and-down">
 			<li><a href="#!">About</a></li>
 			<li><a href="#!">Submit</a></li>
