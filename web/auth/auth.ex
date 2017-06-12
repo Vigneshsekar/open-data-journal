@@ -13,7 +13,7 @@ defmodule Jod.Auth do
 
     cond do
       user && checkpw(given_pass, user.password_hash) ->
-        {:ok, Jod.Auth.login(conn, user)}
+        {:ok, login(conn, user)}
       user ->
         {:error, :unauthorized, conn}
       true ->

@@ -7,8 +7,12 @@ defmodule Jod.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+  end
+
+  pipeline :with_session do
     plug Guardian.Plug.VerifySession
     plug Guardian.Plug.LoadResource
+    plug Jod.CurrentUser
   end
 
   pipeline :browser_auth do
@@ -22,7 +26,7 @@ defmodule Jod.Router do
   end
 
   scope "/", Jod do
-    pipe_through :browser # Use the default browser stack
+    pipe_through [:browser, :with_session] # Use the default browser stack
 
     get "/", PageController, :index
     resources "/users", UserController, only: [:new, :create]
@@ -30,7 +34,7 @@ defmodule Jod.Router do
   end
 
   scope "/", Jod do
-    pipe_through [:browser, :browser_auth]
+    pipe_through [:browser, :with_session, :browser_auth]
     resources "/users", UserController, only: [:show, :index, :update]
   end
 
