@@ -14,17 +14,22 @@ defmodule Jod.User do
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
+
+  @required_fields ~w(first_name email)a
+  @optional_fields ~w(last_name)
+
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:first_name, :last_name, :email])
-    |> validate_required([:first_name, :last_name, :email])
+    |> cast(params, @required_fields ++ @optional_fields)
+    |> validate_required(@required_fields)
     |> validate_format(:email, ~r/@/)
+    |> unique_constraint(:email)
   end
 
   def registration_changeset(struct, params) do
     struct
     |> changeset(params)
-    |> cast(params, [:password])
+    |> cast(params, ~w(password)a)
     |> validate_length(:password, min: 6)
     |> generate_password_hash()
   end
