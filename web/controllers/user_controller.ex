@@ -2,6 +2,9 @@ defmodule Jod.UserController do
   use Jod.Web, :controller
   alias Jod.User
 
+  #:scrub_params function plug to convert blank-string params into nils
+  plug :scrub_params, "user" when action in ~w(create)a
+
   def index(conn, _params) do
     users = Repo.all(User)
     render(conn, "index.html", users: users)
@@ -13,12 +16,13 @@ defmodule Jod.UserController do
   end
 
   def create(conn, %{"user" => user_params}) do
-    changeset = User.registration_changeset(%User{}, user_params)
+    changeset = %User{} |> User.registration_changeset(user_params)
+
     case Repo.insert(changeset) do
       {:ok, user} -> 
         conn
         |> Jod.Auth.login(user) #Sign-in user on account creation
-        |> put_flash(:info, "User created!")
+        |> put_flash(:info, "Welcome #{user.name}!")
         |> redirect(to: page_path(conn, :index))
       {:error, changeset} -> 
         conn
@@ -27,7 +31,7 @@ defmodule Jod.UserController do
   end
 
   def show(conn, %{"id" => id}) do
-    user = Repo.get(User, id)
+    user = Repo.get!(User, id)
     changeset = User.changeset(user)
     cond do
       user == Guardian.Plug.current_resource(conn) ->

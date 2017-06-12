@@ -15,9 +15,7 @@
   </head>
 
   <body>
-    <%= render "site_header.html", conn: @conn %>
-
-    
+    <%= render "site_header.html", conn: @conn, current_user: @current_user %>
 
     <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
     <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
