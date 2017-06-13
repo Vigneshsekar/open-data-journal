@@ -52,7 +52,7 @@ defmodule Jod.UserController do
         case Repo.update(changeset) do
           {:ok, user} ->
             conn
-            |> put_flash(:info, "User updated")
+            |> put_flash(:info, "You information has been updated, #{user.name}")
             |> redirect(to: user_path(conn, :index))
             
           {:error, changeset} ->

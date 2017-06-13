@@ -7,6 +7,7 @@ defmodule Jod.User do
     field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+    field :is_admin, :boolean, default: false
 
     timestamps()
   end
@@ -16,7 +17,7 @@ defmodule Jod.User do
   """
 
   @required_fields ~w(first_name email)a
-  @optional_fields ~w(last_name)
+  @optional_fields ~w(last_name is_admin)
 
   def changeset(struct, params \\ %{}) do
     struct
