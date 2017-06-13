@@ -1,5 +1,6 @@
-defmodule Jod.Token do
-  use Jod.Web, :controller
+defmodule SimpleAuth.GuardianErrorHandler do
+  import Phoenix.Controller
+  import Jod.Router.Helpers
   
   def unauthenticated(conn, _params) do
     conn
