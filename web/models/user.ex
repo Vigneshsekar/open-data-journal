@@ -9,6 +9,8 @@ defmodule Jod.User do
     field :password_hash, :string
     field :is_admin, :boolean, default: false
 
+    has_many :submissions, Jod.Submission
+
     timestamps()
   end
 
