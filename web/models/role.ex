@@ -4,6 +4,8 @@ defmodule Jod.Role do
   schema "roles" do
     field :name, :string
 
+    has_many :users, Jod.User
+
     timestamps()
   end
 

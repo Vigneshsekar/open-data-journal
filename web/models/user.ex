@@ -9,6 +9,7 @@ defmodule Jod.User do
     field :password_hash, :string
 
     has_many :submissions, Jod.Submission
+    belongs_to :role, Jod.Role
 
     timestamps()
   end
@@ -17,7 +18,7 @@ defmodule Jod.User do
   Builds a changeset based on the `struct` and `params`.
   """
 
-  @required_fields ~w(first_name email)a
+  @required_fields ~w(first_name email role_id)a
   @optional_fields ~w(last_name is_admin)a
 
   def changeset(struct, params \\ %{}) do
