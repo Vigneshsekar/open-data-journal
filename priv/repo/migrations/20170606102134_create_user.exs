@@ -7,7 +7,6 @@ defmodule Jod.Repo.Migrations.CreateUser do
       add :last_name, :string
       add :email, :string, null: false
       add :password_hash, :string
-      add :is_admin, :boolean, default: false, null: false
 
       timestamps()
     end
