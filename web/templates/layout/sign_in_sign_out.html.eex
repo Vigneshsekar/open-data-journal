@@ -1,6 +1,6 @@
 <%= if @current_user do %>
 <li>
-        <%= link "Sign out", to: session_path(@conn, :delete, @current_user),
+    <%= link "Sign out", to: session_path(@conn, :delete, @current_user),
                             method: "delete" %>
 </li>
 <% else %>

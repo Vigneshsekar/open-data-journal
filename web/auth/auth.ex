@@ -1,6 +1,5 @@
 defmodule Jod.Auth do
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
-  import Plug.Conn #Check
 
   def login(conn, user) do
     conn
@@ -15,11 +14,10 @@ defmodule Jod.Auth do
       user && checkpw(given_pass, user.password_hash) ->
         {:ok, login(conn, user)}
       user ->
-        {:error, :unauthorized, conn}
+        {:error, :unauthenticated, conn}
       true ->
         dummy_checkpw()
         {:error, :not_found, conn}
     end
   end
-
 end
