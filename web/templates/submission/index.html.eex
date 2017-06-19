@@ -1,0 +1,15 @@
+<%= if @current_user.id == @user.id do %>
+  <h1>My submissions</h1>
+  <%= link "Create new", to: user_submission_path(@conn, :new, 
+                                            @current_user) %>
+<% else %>
+  <h1><%= @user.name %>'s submissions</h1>
+<% end %>
+<ul>
+  <%= for submission <- @submissions do %>
+    <li>
+      <%= link submission.title, to: user_submission_path(@conn, :show, 
+                                              submission.user, submission) %>
+    </li>
+  <% end %>
+</ul>
