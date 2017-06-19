@@ -29,11 +29,26 @@ defmodule Jod.SubmissionController do
   end
 
   def new(conn, _params, current_user) do
-     
+    changeset =
+      current_user
+      |> build_assoc(:submissions)
+      |> Submission.changeset
+    render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"submission" => submission_params}, current_user) do
-    
+    changeset =
+      current_user
+      |> build_assoc(:submissions)
+      |> Submission.changeset(submission_params)
+    case Repo.insert(changeset) do
+      {:ok, _} ->
+        conn
+        |> put_flash(:info, "Submission is made successfully")
+        |> redirect(to: user_submission_path(conn, :index, current_user.id))
+      {:error, changeset} ->
+        render(conn, "new.html", changeset: changeset)
+    end
   end
 
   def edit(conn, %{"id" => id}, current_user) do
