@@ -11,12 +11,21 @@ defmodule Jod.SubmissionController do
           [conn, conn.params, conn.assigns.current_user])
   end
 
-  def index(conn, _params, current_user) do
-    
+  def index(conn, %{"user_id" => user_id}, _current_user) do
+    user = User |> Repo.get!(user_id)
+    submissions =
+      user
+      |> user_submissions
+      |> Repo.all
+      |> Repo.preload(:user)
+    render(conn, "index.html", submissions: submissions, user: user)
   end
 
-  def show(conn, %{"id" => id}, current_user) do
-    
+  def show(conn, %{"user_id" => user_id, "id" => id},
+                                       _current_user) do
+    user = User |> Repo.get!(user_id)
+    submission = user |> user_submission_by_id(id) |> Repo.preload(:user)
+    render(conn, "show.html", submission: submission, user: user)
   end
 
   def new(conn, _params, current_user) do
