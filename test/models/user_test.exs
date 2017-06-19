@@ -3,7 +3,7 @@ defmodule Jod.UserTest do
 
   alias Jod.User
 
-  @valid_attrs %{email: "some content", first_name: "some content", last_name: "some content", password_hash: "some content"}
+  @valid_attrs %{email: "test@email.com", first_name: "some content", last_name: "some content", password_hash: "some content", role_id: 1}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

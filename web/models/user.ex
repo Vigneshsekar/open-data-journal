@@ -19,7 +19,7 @@ defmodule Jod.User do
   """
 
   @required_fields ~w(first_name email role_id)a
-  @optional_fields ~w(last_name is_admin)a
+  @optional_fields ~w(last_name)a
 
   def changeset(struct, params \\ %{}) do
     struct
