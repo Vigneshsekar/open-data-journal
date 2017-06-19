@@ -19,7 +19,7 @@ defmodule Jod.SessionController do
       {:error, _reason, conn} ->
         conn
         |> put_flash(:error, "Please check your credentials")
-        |> render("new.html")
+        |> redirect(to: page_path(conn, :index))
     end
   end
 
