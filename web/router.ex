@@ -41,8 +41,9 @@ defmodule Jod.Router do
     scope "/", Jod do
       pipe_through [:browser_auth]
 
-      resources "/users", UserController, only: [:show, :index, :update]
-      resources "/submissions", SubmissionController
+      resources "/users", UserController, only: [:show, :index, :update] do
+        resources "/submissions", SubmissionController
+      end
 
       # Admin zone
       scope "/admin", Admin, as: :admin do
