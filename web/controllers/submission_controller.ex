@@ -66,14 +66,17 @@ defmodule Jod.SubmissionController do
         conn
         |> put_flash(:info, "Your submission is updated successfully")
         |> redirect(to: user_submission_path(conn, :show, current_user.id, 
-                                      post.id))
+                                      submission.id))
       {:error, changeset} ->
         render(conn, "edit.html", submission: submission, changeset: changeset)
     end
   end
 
   def delete(conn, %{"id" => id}, current_user) do
-
+    current_user |> user_submission_path(id) |> Repo.delete!
+    conn
+    |> put_flash(:info, "Your submission is deleted successfully")
+    |> redirect(to: user_submission_path(conn, :index, current_user.id))
   end
 
   defp user_submissions(user) do
