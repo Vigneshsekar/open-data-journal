@@ -52,16 +52,28 @@ defmodule Jod.SubmissionController do
   end
 
   def edit(conn, %{"id" => id}, current_user) do
-    
+    submission = current_user |> user_submission_by_id(id)
+    changeset = Submission.changeset(submission)
+    render(conn, "edit.html", submission: submission, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "submission" => submission_params},
-             current_user) do
-    
+                                                      current_user) do
+    submission = current_user |> user_submission_by_id(id)
+    changeset = Submission.changeset(submission, submission_params)
+    case Repo.update(changeset) do
+      {:ok, _} ->
+        conn
+        |> put_flash(:info, "Your submission is updated successfully")
+        |> redirect(to: user_submission_path(conn, :show, current_user.id, 
+                                      post.id))
+      {:error, changeset} ->
+        render(conn, "edit.html", submission: submission, changeset: changeset)
+    end
   end
 
   def delete(conn, %{"id" => id}, current_user) do
-    
+
   end
 
   defp user_submissions(user) do
