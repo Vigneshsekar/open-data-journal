@@ -53,8 +53,16 @@ defmodule Jod.SubmissionController do
 
   def edit(conn, %{"id" => id}, current_user) do
     submission = current_user |> user_submission_by_id(id)
-    changeset = Submission.changeset(submission)
-    render(conn, "edit.html", submission: submission, changeset: changeset)
+
+    if submission do
+      changeset = Submission.changeset(submission)
+      render(conn, "edit.html", submission: submission, changeset: changeset)
+    else
+      conn
+      |> put_status(:not_found)
+      |> render(Jod.ErrorView, "404.html")
+    end
+    
   end
 
   def update(conn, %{"id" => id, "submission" => submission_params},
