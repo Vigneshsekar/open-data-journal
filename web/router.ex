@@ -18,6 +18,7 @@ defmodule Jod.Router do
 
     get "/", PageController, :index
     resources "/submissions", SubmissionController
+    resources "/users", UserController
   end
 
   # Other scopes may use custom stacks.
