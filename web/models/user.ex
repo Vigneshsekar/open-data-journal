@@ -1,5 +1,6 @@
 defmodule Jod.User do
   use Jod.Web, :model
+  import Comeonin.Bcrypt, only: [hashpwsalt: 1]
 
   schema "users" do
     field :first_name, :string
@@ -22,5 +23,15 @@ defmodule Jod.User do
     struct
     |> cast(params, [:first_name, :last_name, :email, :username, :password, :password_confirmation])
     |> validate_required([:first_name, :email, :username, :password, :password_confirmation])
+    |> generate_password_hash
+  end
+
+  defp generate_password_hash(changeset) do
+    if password = get_change(changeset, :password) do
+      changeset
+      |> put_change(:password_hash, hashpwsalt(password))
+    else
+      changeset
+    end
   end
 end

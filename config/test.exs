@@ -17,3 +17,6 @@ config :jod, Jod.Repo,
   database: "jod_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+# To speed-up the tests. Not to spend too much time on encrypting the password.
+config :comeonin, bcrypt_log_rounds: 4

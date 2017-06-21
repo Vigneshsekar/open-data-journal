@@ -2,7 +2,7 @@ defmodule Jod.UserControllerTest do
   use Jod.ConnCase
 
   alias Jod.User
-  @valid_create_attrs %{email: "testemail@gmail.com", first_name: "some content", last_name: "some content", password: "qwerty", password_confirmation:"qwerty" username: "testemail"}
+  @valid_create_attrs %{email: "testemail@gmail.com", first_name: "some content", last_name: "some content", password: "qwerty", password_confirmation: "qwerty", username: "testemail"}
   @valid_attrs %{email: "testemail@gmail.com", username: "testemail"}
   @invalid_attrs %{}
 
