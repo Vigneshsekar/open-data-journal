@@ -1,0 +1,38 @@
+<h2>Listing submissions</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>State</th>
+      <th>Data url</th>
+      <th>Doi</th>
+      <th>Metadata</th>
+      <th>Review issuer</th>
+      <th>Suggested editor</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for submission <- @submissions do %>
+    <tr>
+      <td><%= submission.title %></td>
+      <td><%= submission.state %></td>
+      <td><%= submission.data_url %></td>
+      <td><%= submission.doi %></td>
+      <td><%= submission.metadata %></td>
+      <td><%= submission.review_issuer_id %></td>
+      <td><%= submission.suggested_editor %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: submission_path(@conn, :show, submission), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: submission_path(@conn, :edit, submission), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: submission_path(@conn, :delete, submission), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New submission", to: submission_path(@conn, :new) %>

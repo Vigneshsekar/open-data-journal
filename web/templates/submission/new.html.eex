@@ -1,0 +1,6 @@
+<h2>New submission</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: submission_path(@conn, :create) %>
+
+<%= link "Back", to: submission_path(@conn, :index) %>

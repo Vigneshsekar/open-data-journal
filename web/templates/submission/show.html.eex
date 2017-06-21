@@ -1,0 +1,43 @@
+<h2>Show submission</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @submission.title %>
+  </li>
+
+  <li>
+    <strong>State:</strong>
+    <%= @submission.state %>
+  </li>
+
+  <li>
+    <strong>Data url:</strong>
+    <%= @submission.data_url %>
+  </li>
+
+  <li>
+    <strong>Doi:</strong>
+    <%= @submission.doi %>
+  </li>
+
+  <li>
+    <strong>Metadata:</strong>
+    <%= @submission.metadata %>
+  </li>
+
+  <li>
+    <strong>Review issuer:</strong>
+    <%= @submission.review_issuer_id %>
+  </li>
+
+  <li>
+    <strong>Suggested editor:</strong>
+    <%= @submission.suggested_editor %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: submission_path(@conn, :edit, @submission) %>
+<%= link "Back", to: submission_path(@conn, :index) %>
