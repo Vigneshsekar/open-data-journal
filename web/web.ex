@@ -52,7 +52,6 @@ defmodule Jod.Web do
       import Jod.Router.Helpers
       import Jod.ErrorHelpers
       import Jod.Gettext
-      import Jod.ViewHelper
     end
   end
 

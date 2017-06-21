@@ -36,7 +36,7 @@ defmodule Jod.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_jod_key",
-    signing_salt: "KXnrmjMn"
+    signing_salt: "pyo0w6Ew"
 
   plug Jod.Router
 end

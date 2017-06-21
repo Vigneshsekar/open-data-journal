@@ -2,11 +2,8 @@ exports.config = {
   // See http://brunch.io/#documentation for docs.
   files: {
     javascripts: {
-       joinTo: {
-         "js/app.js": /^(web\/static\/js)|(node_modules)/,
-				 "js/materialize.js": ["web/static/vendor/materialize/js/materialize.js"],
-         "js/materialize.min.js": ["web/static/vendor/materialize/js/materialize.min.js"],
-       }
+      joinTo: "js/app.js"
+
       // To use a separate vendor.js bundle, specify two files path
       // http://brunch.io/docs/config#-files-
       // joinTo: {
@@ -22,13 +19,8 @@ exports.config = {
       //   ]
       // }
     },
-
     stylesheets: {
-      joinTo: {
-         "css/app.css": /^(web\/static\/css)/,
-  			 "css/materialize.css": ["web/static/vendor/materialize/css/materialize.css"],
-         "css/materialize.min.css": ["web/static/vendor/materialize/css/materialize.min.css"],
-      },
+      joinTo: "css/app.css",
       order: {
         after: ["web/static/css/app.css"] // concat app.css last
       }
@@ -61,8 +53,7 @@ exports.config = {
   plugins: {
     babel: {
       // Do not use ES6 compiler in vendor code
-      ignore: [/web\/static\/vendor/],
-      presets: [ "es2015", "react" ]
+      ignore: [/web\/static\/vendor/]
     }
   },
 
@@ -73,48 +64,6 @@ exports.config = {
   },
 
   npm: {
-    enabled: true,
-    whitelist: ["phoenix", "phoenix_html", "react",
-    "react-dom", "redux", "react-redux"]
+    enabled: true
   }
 };
-// To add the materialize generated assets to your brunch build, do the following:
-//
-// Replace
-//
-//     javascripts: {
-//       joinTo: "js/app.js"
-//     },
-//
-// With
-//
-//     javascripts: {
-//       joinTo: {
-//         "js/app.js": /^(web\/static\/js)|(node_modules)/,
-//				 "js/materialize.js": ["web/static/vendor/materialize/js/materialize.js"],
-//         "js/materialize.min.js": ["web/static/vendor/materialize/js/materialize.min.js"],
-//       }
-//     },
-//
-// Replace
-//
-//     stylesheets: {
-//       joinTo: "css/app.css",
-//       order: {
-//         after: ["web/static/css/app.css"] // concat app.css last
-//       }
-//     },
-//
-// With
-//
-//     stylesheets: {
-//       joinTo: {
-//         "css/app.css": /^(web\/static\/css)/,
-//  			 "css/materialize.css": ["web/static/vendor/materialize/css/materialize.css"],
-//         "css/materialize.min.css": ["web/static/vendor/materialize/css/materialize.min.css"],
-//       },
-//       order: {
-//         after: ["web/static/css/app.css"] // concat app.css last
-//       }
-//     },
-//

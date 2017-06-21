@@ -3,6 +3,6 @@ defmodule Jod.PageControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"
-    assert html_response(conn, 200) =~ "The Journal of Open Data"
+    assert html_response(conn, 200) =~ "Welcome to Phoenix!"
   end
 end
