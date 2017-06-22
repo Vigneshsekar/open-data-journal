@@ -16,6 +16,7 @@ defmodule Jod.User do
     field :password_confirmation, :string, virtual: true 
 
     has_many :submissions, Jod.Submission
+    belongs_to :role, Jod.Role
   end
 
   @doc """
@@ -23,8 +24,8 @@ defmodule Jod.User do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:first_name, :last_name, :email, :username, :password, :password_confirmation])
-    |> validate_required([:first_name, :email, :username, :password, :password_confirmation])
+    |> cast(params, [:first_name, :last_name, :email, :username, :password, :password_confirmation, :role_id])
+    |> validate_required([:first_name, :email, :username, :password, :password_confirmation, :role_id])
     |> generate_password_hash
   end
 
