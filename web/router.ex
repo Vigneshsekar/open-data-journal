@@ -19,7 +19,7 @@ defmodule Jod.Router do
     get "/", PageController, :index
     resources "/submissions", SubmissionController
     resources "/users", UserController
-    resources "/sessions", SessionController, only: [:new, :create]
+    resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
 
   # Other scopes may use custom stacks.
