@@ -21,6 +21,9 @@ defmodule Jod.Router do
       resources "/submissions", SubmissionController
     end
     
+    resources "/submissions", SubmissionController, only: [] do
+      resources "/comments", CommentController, only: [:create, :delete, :update]
+    end
     resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
 

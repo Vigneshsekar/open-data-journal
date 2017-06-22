@@ -5,6 +5,7 @@ defmodule Jod.SubmissionController do
 
   plug :assign_user
   plug :authorize_user when action in [:new, :create, :update, :edit, :delete]
+  plug :set_authorization_flag
 
   def index(conn, _params) do
     submissions = Repo.all(assoc(conn.assigns[:user], :submissions))
@@ -37,7 +38,12 @@ defmodule Jod.SubmissionController do
 
   def show(conn, %{"id" => id}) do
     submission = Repo.get!(assoc(conn.assigns[:user], :submissions), id)
-    render(conn, "show.html", submission: submission)
+    |> Repo.preload(:comments)
+    
+    comment_changeset = submission
+      |> build_assoc(:comments)
+      |> Jod.Comment.changeset()
+    render(conn, "show.html", submission: submission, comment_changeset: comment_changeset)
   end
 
   def edit(conn, %{"id" => id}) do
@@ -88,9 +94,13 @@ defmodule Jod.SubmissionController do
     |> halt
   end
 
-  defp authorize_user(conn, _opts) do
+  defp is_authorized_user?(conn) do
     user = get_session(conn, :current_user)
-    if user && (Integer.to_string(user.id) == conn.params["user_id"] || Jod.RoleChecker.is_admin?(user)) do
+    (user && (Integer.to_string(user.id) == conn.params["user_id"] || Jod.RoleChecker.is_admin?(user)))
+  end
+
+  defp authorize_user(conn, _opts) do
+    if is_authorized_user?(conn) do
       conn
     else
       conn
@@ -98,5 +108,9 @@ defmodule Jod.SubmissionController do
       |> redirect(to: page_path(conn, :index))
       |> halt()
     end
+  end
+
+  defp set_authorization_flag(conn, _opts) do
+    assign(conn, :author_or_admin, is_authorized_user?(conn))
   end
 end

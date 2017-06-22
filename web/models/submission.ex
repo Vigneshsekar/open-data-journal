@@ -13,6 +13,7 @@ defmodule Jod.Submission do
     timestamps()
 
     belongs_to :user, Jod.User
+    has_many :comments, Jod.Comment
   end
 
   @doc """

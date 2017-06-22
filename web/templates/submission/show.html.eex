@@ -35,5 +35,15 @@
 
 </ul>
 
+<div class="comments">
+ <h2>Comments</h2>
+ <%= for comment <- @submission.comments do %>
+   <%= render Jod.CommentView, "comment.html", comment: comment %>
+ <% end %>
+</div>
+
+<%= render Jod.CommentView, "form.html", changeset: @comment_changeset, 
+action: submission_comment_path(@conn, :create, @submission) %>
+
 <%= link "Edit", to: user_submission_path(@conn, :edit, @user, @submission) %>
 <%= link "Back", to: user_submission_path(@conn, :index, @user) %>
