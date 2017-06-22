@@ -21,11 +21,12 @@
     <strong>Doi:</strong>
     <%= @submission.doi %>
   </li>
-
+  <!--
   <li>
     <strong>Metadata:</strong>
     <%= @submission.metadata %>
   </li>
+  -->
 
   <li>
     <strong>Review issuer:</strong>
@@ -39,5 +40,5 @@
 
 </ul>
 
-<%= link "Edit", to: submission_path(@conn, :edit, @submission) %>
-<%= link "Back", to: submission_path(@conn, :index) %>
+<%= link "Edit", to: user_submission_path(@conn, :edit, @user, @submission) %>
+<%= link "Back", to: user_submission_path(@conn, :index, @user) %>

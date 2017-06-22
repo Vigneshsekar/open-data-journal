@@ -11,6 +11,8 @@ defmodule Jod.Submission do
     field :suggested_editor, :integer
 
     timestamps()
+
+    belongs_to :user, Jod.User
   end
 
   @doc """

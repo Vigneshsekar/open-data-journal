@@ -14,6 +14,8 @@ defmodule Jod.User do
     #Virtual password fields
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true 
+
+    has_many :submissions, Jod.Submission
   end
 
   @doc """
