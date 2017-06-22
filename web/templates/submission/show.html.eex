@@ -21,12 +21,7 @@
     <strong>Doi:</strong>
     <%= @submission.doi %>
   </li>
-  <!--
-  <li>
-    <strong>Metadata:</strong>
-    <%= @submission.metadata %>
-  </li>
-  -->
+
 
   <li>
     <strong>Review issuer:</strong>

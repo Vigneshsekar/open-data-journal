@@ -30,12 +30,6 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :metadata, class: "control-label" %>
-    <%= text_input f, :metadata, class: "form-control" %>
-    <%= error_tag f, :metadata %>
-  </div>
-
-  <div class="form-group">
     <%= label f, :review_issuer_id, class: "control-label" %>
     <%= number_input f, :review_issuer_id, class: "form-control" %>
     <%= error_tag f, :review_issuer_id %>
