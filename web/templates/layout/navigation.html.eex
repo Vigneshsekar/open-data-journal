@@ -1,0 +1,46 @@
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li class="logo">
+        The Journal of Open Data
+      </li>
+      <li>
+        <%= link "Home", to: page_path(@conn, :index) %>
+      </li>
+      <li>
+        <%= link "Submit", to: submission_path(@conn, :index) %>
+      </li>
+      <li>
+        <%= link "Review", to: submission_path(@conn, :index) %>
+      </li>
+      <%= if current_user = @conn.assigns[:current_user] do %>
+        <li>
+          <%= link "My submissions", to: user_submission_path(@conn, :index, current_user.id) %>
+        </li>
+        <li>
+          <%= link "Make a submission", to: user_submission_path(@conn, :new, current_user.id) %>
+        </li>
+        <li>
+          <%= link "Review", to: user_submission_path(@conn, :new, current_user.id) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+        <%= if current_user = @conn.assigns[:current_user] do %>
+          <li>
+            <%= link current_user.username, to: user_path(@conn, :edit, current_user.id) %>
+          </li>
+          <li>
+            <%= link "Logout", to: session_path(@conn, :delete, current_user.id), method: :delete, class: "button alert" %>
+          </li>
+        <% else %>
+          <li>
+            <%= link "Login", to: session_path(@conn, :new), class: "button" %>
+          </li>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>

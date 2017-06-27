@@ -18,6 +18,7 @@ defmodule Jod.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/submissions", SubmissionController, only: [:index]
     resources "/users", UserController do
       resources "/submissions", SubmissionController
     end
