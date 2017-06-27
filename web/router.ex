@@ -7,6 +7,7 @@ defmodule Jod.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Jod.CurrentUserPlug # Access current user at @conn.assigns[:current_user]
   end
 
   pipeline :api do
