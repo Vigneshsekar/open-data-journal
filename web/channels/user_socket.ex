@@ -3,6 +3,7 @@ defmodule Jod.UserSocket do
 
   ## Channels
   # channel "room:*", Jod.RoomChannel
+  channel "comments:*", Jod.CommentChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
