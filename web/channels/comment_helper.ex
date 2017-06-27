@@ -23,6 +23,9 @@ defmodule Jod.CommentHelper do
     end)
   end
 
+  def delete(_params, %{}), do: {:error, "User is not authorized"}
+  def delete(_params, nil), do: {:error, "User is not authorized"}
+
   defp authorize_and_perform(submission_id, user_id, action) do
     submission = get_submission(submission_id)
     user = get_user(user_id)
