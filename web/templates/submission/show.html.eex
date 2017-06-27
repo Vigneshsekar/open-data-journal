@@ -1,3 +1,4 @@
+<input type="hidden" id="submission-id" value="<%= @submission.id %>">
 <h2>Show submission</h2>
 
 <ul>
