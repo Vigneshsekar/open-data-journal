@@ -5,7 +5,7 @@ defmodule Jod.Repo.Migrations.CreateComment do
     create table(:comments) do
       add :author, :string
       add :body, :text
-      add :approved, :boolean, default: true, null: false
+      add :approved, :boolean, default: true
       add :submission_id, references(:submissions, on_delete: :nothing)
 
       timestamps()

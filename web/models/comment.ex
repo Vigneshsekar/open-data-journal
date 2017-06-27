@@ -4,8 +4,9 @@ defmodule Jod.Comment do
   schema "comments" do
     field :author, :string
     field :body, :string
-    field :approved, :boolean, default: false
+    field :approved, :boolean, default: true
     belongs_to :submission, Jod.Submission
+    belongs_to :user, Jod.User
 
     timestamps()
   end
