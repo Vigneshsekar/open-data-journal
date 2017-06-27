@@ -17,6 +17,7 @@ defmodule Jod.User do
 
     has_many :submissions, Jod.Submission
     belongs_to :role, Jod.Role
+    has_many :comments, Jod.Comment
   end
 
   @doc """
