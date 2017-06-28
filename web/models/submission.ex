@@ -21,7 +21,7 @@ defmodule Jod.Submission do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :state, :data_url, :doi, :review_issuer_id, :suggested_editor])
-    |> validate_required([:title, :state, :data_url, :doi, :review_issuer_id, :suggested_editor])
+    |> cast(params, [:title, :data_url, :suggested_editor])
+    |> validate_required([:title, :data_url, :suggested_editor])
   end
 end
