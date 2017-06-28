@@ -20,7 +20,7 @@ config :jod, Jod.Endpoint,
 
 
 # Configure your database
-config :Jod, Jod.Repo,
+config :jod, Jod.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL"),
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
