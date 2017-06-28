@@ -3,7 +3,9 @@
   <div class="top-bar-left">
     <ul class="menu">
       <li>
+        <h5>
         <%= link "The Journal of Open Data", to: page_path(@conn, :index) %>
+        </h5>
       </li>
     </ul>
   </div>
@@ -20,7 +22,7 @@
             <%= link "Review", to: user_submission_path(@conn, :new, current_user.id) %>
           </li>
           <li>
-            <%= link "Logout", to: session_path(@conn, :delete, current_user.id), method: :delete, class: "button alert" %>
+            <%= link "Logout", to: session_path(@conn, :delete, current_user.id), method: :delete, class: "hollow button alert" %>
           </li>
         <% else %>
           <li>
@@ -30,7 +32,7 @@
             <%= link "Review", to: session_path(@conn, :new) %>
           </li>
           <li>
-            <%= link "Login", to: session_path(@conn, :new), class: "button" %>
+            <%= link "Login", to: session_path(@conn, :new), class: "hollow button primary" %>
           </li>
         <% end %>
       </li>

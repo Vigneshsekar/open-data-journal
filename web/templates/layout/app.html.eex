@@ -8,7 +8,7 @@
     <section class="main-content row expanded">
       <%= render "alerts.html", conn: @conn %>
 
-      <div class="row content">
+      <div class="content">
         <%= render @view_module, @view_template, assigns %>
       </div>
     </section>

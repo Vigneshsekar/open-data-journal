@@ -1,10 +1,16 @@
 
 .top-bar, .top-bar ul {
-  background-color: #2C3840;
-  color: white;
+  background-color: white;
 }
 
-$menu-underline-from-center-bg: #2C3840;
+.site-banner {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: initial;
+}
+
+$menu-underline-from-center-bg: white;
 $menu-underline-from-center-border-thickness: 0.125rem;
 
 .hover-underline-menu {
@@ -14,7 +20,7 @@ $menu-underline-from-center-border-thickness: 0.125rem;
     background-color: $menu-underline-from-center-bg;
 
     a {
-      color: $white;
+      color: #2C3840;;
       padding: 1.2rem 1.5rem;
     }
 
@@ -25,7 +31,7 @@ $menu-underline-from-center-border-thickness: 0.125rem;
         content: "";
         position: absolute;
         top: calc(100% - #{$menu-underline-from-center-border-thickness});
-        border-bottom: $menu-underline-from-center-border-thickness solid $white;
+        border-bottom: $menu-underline-from-center-border-thickness solid #2C3840;
         left: 50%;
         right: 50%;
         transition: all 0.5s ease;
@@ -45,9 +51,8 @@ $menu-underline-from-center-border-thickness: 0.125rem;
 $highlight: $primary-color;
 
 .responsive-blog-footer {
-  background: #2C3840;
-  padding: 3rem 3rem;
-  color: white;
+  background: #fff;
+  color: #2C3840;
   width:100%;
   max-height: 250px;
 
