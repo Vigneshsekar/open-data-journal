@@ -9,6 +9,7 @@ defmodule Jod.Submission do
     field :metadata, :map
     field :review_issuer_id, :integer
     field :suggested_editor, :integer
+    field :description, :string
 
     timestamps()
 
@@ -21,7 +22,7 @@ defmodule Jod.Submission do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :data_url, :suggested_editor])
-    |> validate_required([:title, :data_url, :suggested_editor])
+    |> cast(params, [:title, :description, :data_url])
+    |> validate_required([:title, :description, :data_url])
   end
 end
