@@ -3,12 +3,25 @@ defmodule Jod.SubmissionController do
 
   alias Jod.Submission
 
-  plug :assign_user
+  plug :assign_user when not action in [:index]
   plug :authorize_user when action in [:new, :create, :update, :edit, :delete]
   plug :set_authorization_flag
 
+  def index(conn, %{"user_id" => _user_id}) do
+    conn = assign_user(conn, nil)
+    if conn.assigns[:user] do
+      submissions = Repo.all(assoc(conn.assigns[:user], :submissions)) |> Repo.preload(:user)
+      render(conn, "index.html", submissions: submissions)
+    else
+      conn
+    end
+  end
+
   def index(conn, _params) do
-    submissions = Repo.all(assoc(conn.assigns[:user], :submissions))
+    submissions = Repo.all(from p in Submission,
+                      limit: 5,
+                      order_by: [desc: :inserted_at],
+                      preload: [:user])
     render(conn, "index.html", submissions: submissions)
   end
 

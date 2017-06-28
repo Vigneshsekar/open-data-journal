@@ -26,13 +26,12 @@
       <td><%= submission.suggested_editor %></td>
 
       <td class="text-right">
-        <%= link "Show", to: user_submission_path(@conn, :show, @user, submission), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: user_submission_path(@conn, :edit, @user, submission), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: user_submission_path(@conn, :delete, @user, submission), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        <%= link "Show", to: user_submission_path(@conn, :show, submission.user, submission), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: user_submission_path(@conn, :edit, submission.user, submission), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: user_submission_path(@conn, :delete, submission.user, submission), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<%= link "New submission", to: user_submission_path(@conn, :new, @user) %>
