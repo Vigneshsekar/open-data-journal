@@ -25,9 +25,10 @@ defmodule Jod.User do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:first_name, :last_name, :email, :username, :password, :password_confirmation, :role_id])
-    |> validate_required([:first_name, :email, :username, :password, :password_confirmation, :role_id])
+    |> cast(params, [:first_name, :last_name, :email, :username, :password, :password_confirmation])
+    |> validate_required([:first_name, :email, :username, :password, :password_confirmation])
     |> generate_password_hash
+    |> assign_user_role
   end
 
   defp generate_password_hash(changeset) do
@@ -36,6 +37,16 @@ defmodule Jod.User do
       |> put_change(:password_hash, hashpwsalt(password))
     else
       changeset
+    end
+  end
+
+  defp assign_user_role(changeset) do
+    role_id = get_change(changeset, :password)
+    if role_id == 1  do
+      changeset
+    else
+      changeset
+      |> put_change(:role_id, 2)
     end
   end
 end
