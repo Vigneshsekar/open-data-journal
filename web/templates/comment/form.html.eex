@@ -1,4 +1,12 @@
 <% username = @conn.assigns[:current_user].username %>
+<label>Change the status (ToDo: Add editor roles and restrict to them)
+  <select>
+    <option value=":yet_to_start">Yet to start</option>
+    <option value=":being_reviewed">Being reviewed</option>
+    <option value=":requested_changes">Requested changes</option>
+    <option value=":publish">Publish</option>
+  </select>
+</label>
 <%= form_for @changeset, @action, fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
