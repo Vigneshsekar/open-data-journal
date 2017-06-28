@@ -1,15 +1,20 @@
+
 <%= form_for @changeset, @action, fn f -> %>
   <%= if f.errors != [] do %>
-    <div class="alert alert-danger">
-      <p> Oops, Something went wrong! </p>
-      <ul>
-        <%= for {attr, message} <- f.errors do %>
-          <li><%= humanize(attr) %><%= message %></li>
-        <% end %>
-      </ul>
+    <div data-closable class="callout alert-callout-subtle warning radius large-offset-3 columns" role="alert">
+      Oops, Something went wrong!
+      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+        <span aria-hidden="true">⊗</span>
+      </button>
     </div>
+    <ul>
+      <%= for {attr, message} <- f.errors do %>
+        <li><%= humanize(attr) %><%= message %></li>
+      <% end %>
+    </ul>
   <% end %>
-  <div class="form-icons">
+  <div class = "row">
+  <div class="form-icons large-3 large-offset-4 columns">
     <h4>Log in to your account</h4>
 
     <div class="input-group">
@@ -25,8 +30,12 @@
       </span>
       <%= password_input f, :password, placeholder: "password", class: "input-group-field"  %>
     </div>
-  </div>
 
-  <%= submit "Login", class: "button expanded"%>
+    <%= submit "Login", class: "button expanded"%>
+  </div>
+  </div>
 <% end %>
+<div class="row"> 
+<div class = "small-5 small-centered columns"> If you do not have an account, please <%= link "Click here", to: user_path(@conn, :new) %> to sign up. </div>
+</div>
 

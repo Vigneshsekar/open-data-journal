@@ -1,47 +1,67 @@
 <%= form_for @changeset, @action, fn f -> %>
   <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+    <div data-closable class="callout alert-callout-subtle warning radius large-offset-3 columns" role="alert">
+      Oops, Something went wrong!
+      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+        <span aria-hidden="true">⊗</span>
+      </button>
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= label f, :first_name, class: "control-label" %>
-    <%= text_input f, :first_name, class: "form-control" %>
-    <%= error_tag f, :first_name %>
-  </div>
+  <div class = "row">
+  <div class="form-icons large-4 large-offset-4 columns">
+    <h4>Create a new account</h4>
 
-  <div class="form-group">
-    <%= label f, :last_name, class: "control-label" %>
-    <%= text_input f, :last_name, class: "form-control" %>
-    <%= error_tag f, :last_name %>
-  </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-user"></i>
+      </span>
+      <%= text_input f, :first_name, placeholder: "First Name", class: "input-group-field" %>
+      <%= error_tag f, :first_name %>
+    </div>
 
-  <div class="form-group">
-    <%= label f, :email, class: "control-label" %>
-    <%= text_input f, :email, class: "form-control" %>
-    <%= error_tag f, :email %>
-  </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-key"></i>
+      </span>
+      <%= text_input f, :last_name, placeholder: "Last Name", class: "input-group-field" %>
+      <%= error_tag f, :last_name %>
+    </div>
 
-  <div class="form-group">
-    <%= label f, :username, class: "control-label" %>
-    <%= text_input f, :username, class: "form-control" %>
-    <%= error_tag f, :username %>
-  </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-key"></i>
+      </span>
+      <%= text_input f, :email, placeholder: "E-mail", class: "input-group-field" %>
+      <%= error_tag f, :email %>
+    </div>
 
-  <div class="form-group">
-    <%= label f, :password, "Password", class: "control-label" %>
-    <%= password_input f, :password, class: "form-control" %>
-    <%= error_tag f, :password %>
-  </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-key"></i>
+      </span>
 
-  <div class="form-group">
-    <%= label f, :password_confirmation, "Password Confirmation", class: "control-label" %>
-    <%= password_input f, :password_confirmation, class: "form-control" %>
-    <%= error_tag f, :password_confirmation %>
-  </div>
+      <%= text_input f, :username, placeholder: "Username", class: "input-group-field" %>
+      <%= error_tag f, :username %>
+    </div>
 
-  <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
-  </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-key"></i>
+      </span>
+
+      <%= password_input f, :password, placeholder: "Password", class: "input-group-field" %>
+      <%= error_tag f, :password %>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-key"></i>
+      </span>
+
+      <%= password_input f, :password_confirmation, placeholder: "Confirm your password", class: "input-group-field" %>
+      <%= error_tag f, :password_confirmation %>
+    </div>
+
+    <%= submit "Create user", class: "button expanded disabled"%>
 <% end %>
