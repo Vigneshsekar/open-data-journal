@@ -3,9 +3,8 @@
 <html lang="en">
   <%= render "head.html", conn: @conn %>
 
-  <body>
+  <body class="container">
     <%= render "navigation.html", conn: @conn %>
-
     <section class="main-content row expanded">
       <%= render "alerts.html", conn: @conn %>
 
@@ -13,7 +12,8 @@
         <%= render @view_module, @view_template, assigns %>
       </div>
     </section>
-
+    
+    <%= render "footer.html" %>
     <%= render "script.html", conn: @conn %>
   </body>
 </html>

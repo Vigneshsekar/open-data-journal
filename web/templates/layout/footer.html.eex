@@ -1,0 +1,20 @@
+<footer class="responsive-blog-footer">
+  <div class="row">
+    <div class="medium-8 columns small-order-2 medium-order-1 about-container">
+      <div class="row">
+        <div class="medium-8 columns about-section">
+          <h4> The Journal of Open Data</h4>
+          <p>A platform for the researchers to preserve and let others make use of their professionally archived data.</p>
+          <a href="https://github.com/Vigneshsekar/open-data-journal">GitHub Link</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row columns flex-container align-justify">
+     <p>Developed under Google Summer of Code 2017 under Open Bioinformatics foundation.</p>
+    <div class="up-arrow">
+      <a href="#top"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</footer>
+
