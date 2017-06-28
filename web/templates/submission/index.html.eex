@@ -1,37 +1,43 @@
-<h2>Listing submissions</h2>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>State</th>
-      <th>Data url</th>
-      <th>Doi</th>
 
-      <th>Review issuer</th>
-      <th>Suggested editor</th>
+<div class="row">
+<div class="column">
+      <ul class="tabs" data-tabs id="featured-submissions-tabs">
+        <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Under review</a></li>
+        <li class="tabs-title"><a href="#panel2">Already published</a></li>
+      </ul>
+      <div class="tabs-content" data-tabs-content="featured-submissions-tabs">
+        <div class="tabs-panel is-active" id="panel1">
+          <h4>These submissions are still being reviewed.</h4>
+          <%= for submission <- @submissions do %>
+            <div class="media-object stack-for-small">
+              <div class="media-object-section">
+                <h5><%= submission.title %></h5>
+                <p><strong>Description: </strong><%= submission.description %></p>
+                <p><strong>Data URL: </strong><%= submission.data_url %></p>
+                <p><strong>Current state: </strong><%= submission.state %></p>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for submission <- @submissions do %>
-    <tr>
-      <td><%= submission.title %></td>
-      <td><%= submission.state %></td>
-      <td><%= submission.data_url %></td>
-      <td><%= submission.doi %></td>
-      
-      <td><%= submission.review_issuer_id %></td>
-      <td><%= submission.suggested_editor %></td>
+                <%= link "Know more", to: user_submission_path(@conn, :show, submission.user, submission) %><span>, <span>
+                <%= link "Edit", to: user_submission_path(@conn, :edit, submission.user, submission) %><span>, <span>
+                <%= link "Delete", to: user_submission_path(@conn, :delete, submission.user, submission), method: :delete, data: [confirm: "Are you sure?"]%>
+              </div>
+            </div>
+            <br>
+            <hr>
+          <% end %>
+        </div>
 
-      <td class="text-right">
-        <%= link "Show", to: user_submission_path(@conn, :show, submission.user, submission), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: user_submission_path(@conn, :edit, submission.user, submission), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: user_submission_path(@conn, :delete, submission.user, submission), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+        <div class="tabs-panel" id="panel2">
+          <h4>The following ones have already received their DOI.</h4>
+          <div class="media-object stack-for-small">
+            <div class="media-object-section">
+              <h5>Hard coded text</h5>
+              <p>Show submissions for which submission.state is :published and sort them in the descending order.</p>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    </div>
 

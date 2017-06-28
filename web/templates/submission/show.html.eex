@@ -1,4 +1,5 @@
 <input type="hidden" id="submission-id" value="<%= @submission.id %>">
+<div class="row">
 <h2>Show submission</h2>
 
 <ul>
@@ -9,7 +10,7 @@
   </li>
 
   <li>
-    <strong>State:</strong>
+    <strong>Current state:</strong>
     <%= @submission.state %>
   </li>
 
@@ -19,7 +20,7 @@
   </li>
 
   <li>
-    <strong>Doi:</strong>
+    <strong>DoI:</strong>
     <%= @submission.doi %>
   </li>
 
@@ -30,26 +31,56 @@
   </li>
 
   <li>
-    <strong>Suggested editor:</strong>
+    <strong>Suggested editor by the user:</strong>
     <%= @submission.suggested_editor %>
+  </li>
+
+  <li>
+    <strong>Description: </strong>
+    <%= @submission.description %>
   </li>
 
 </ul>
 
-<div class="comments">
- <h2>Comments</h2>
- <%= for comment <- @submission.comments do %>
-   <%= render Jod.CommentView, "comment.html", 
-              comment: comment,
-              author_or_admin: @conn.assigns[:author_or_admin],
-              submission: @submission, 
-              conn: @conn 
- %>
- <% end %>
-</div>
+<div class="row">
+  <div class="column">
+    <ul class="tabs" data-tabs id="featured-submissions-tabs">
+      <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Review</a></li>
+      <li class="tabs-title"><a href="#panel2">MetaData</a></li>
+      <li class="tabs-title"><a href="#panel3">Editor's Checklist</a></li>
+    </ul>
+    <div class="tabs-content" data-tabs-content="featured-submissions-tabs">
+      <div class="tabs-panel is-active" id="panel1">
+        <h4>Peer reviews</h4>
+        <div class="comments">
+          <%= for comment <- @submission.comments do %>
+            <%= render Jod.CommentView, "comment.html", 
+                        comment: comment,
+                        author_or_admin: @conn.assigns[:author_or_admin],
+                        submission: @submission, 
+                        conn: @conn 
+            %>
+            <hr>
+          <% end %>
 
-<%= render Jod.CommentView, "form.html", changeset: @comment_changeset, 
-action: submission_comment_path(@conn, :create, @submission) %>
+          <%= render Jod.CommentView, "form.html", changeset: @comment_changeset, 
+              action: submission_comment_path(@conn, :create, @submission), conn: @conn %>
+        </div>
+      </div>
+      <div class="tabs-panel" id="panel2">
+        <h4>The following ones have already received their DOI.</h4>
+        <div class="media-object stack-for-small">
+          <div class="media-object-section">
+            <h5>Hard coded text</h5>
+            <p>Show submissions for which submission.state is :published and sort them in the descending order.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  </div>
 
 <%= link "Edit", to: user_submission_path(@conn, :edit, @user, @submission) %>
 <%= link "Back", to: user_submission_path(@conn, :index, @user) %>
+</div>

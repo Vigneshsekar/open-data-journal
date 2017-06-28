@@ -19,7 +19,7 @@
             <%= link "Make a submission", to: user_submission_path(@conn, :new, current_user.id) %>
           </li>
           <li>
-            <%= link "Review", to: user_submission_path(@conn, :new, current_user.id) %>
+            <%= link "Review", to: submission_path(@conn, :index) %>
           </li>
           <li>
             <%= link "Logout", to: session_path(@conn, :delete, current_user.id), method: :delete, class: "hollow button alert" %>

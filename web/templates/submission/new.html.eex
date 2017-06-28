@@ -1,6 +1,11 @@
+<div class="row">
 <h2>New submission</h2>
 
 <%= render "form.html", changeset: @changeset,
                         action: user_submission_path(@conn, :create, @user) %>
 
-<%= link "Back", to: user_submission_path(@conn, :index, @user) %>
+<div class="small-8 small-offset-4 columns">
+<%= link "Back", to: user_submission_path(@conn, :index, @user), class: "button small-6 hollow primary" %>
+</div>
+
+</div>

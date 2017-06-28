@@ -22,6 +22,7 @@
               <div class="media-object-section">
                 <h5><%= submission.title %></h5>
                 <p>We are currently not adding the description to any of the submissions. But we may also want to ask for that. Abstract is also taken in form of a file which is not supported in Heroku. A markdown supported abstract coulum to be added.</p>
+                <p><%= submission.description %></p>
                 <%= link "Know more", to: user_submission_path(@conn, :show, submission.user, submission) %>
               </div>
             </div>

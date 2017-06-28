@@ -1,15 +1,15 @@
 <%= if @comment.approved do %>
 <div id="comment-<%= @comment.id %>" class="comment" data-comment-id="<%= @comment.id %>">
   <div class="row">
-    <div class="col-xs-4">
+    <div class="small-2 large-4 columns">
       <strong class="comment-author"><%= @comment.author %></strong>
     </div>
-    <div class="col-xs-4">
+    <div class="small-4 large-4 columns">
       <em><%= @comment.inserted_at %></em>
     </div>
-    <div class="col-xs-4 text-right">
+    <div class="small-6 large-4 columns text-right">
      <%= if @conn.assigns[:author_or_admin] || @comment.approved do %>
-      <button class="btn btn-xs btn-danger delete">Delete</button>
+      <button class="button hollow alert">Delete</button>
     <% end %>
     </div>
   </div>
