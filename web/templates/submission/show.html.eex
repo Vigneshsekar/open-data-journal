@@ -62,9 +62,10 @@
             %>
             <hr>
           <% end %>
-
+          <%= if user = @conn.assigns[:current_user] do %>
           <%= render Jod.CommentView, "form.html", changeset: @comment_changeset, 
               action: submission_comment_path(@conn, :create, @submission), conn: @conn %>
+          <% end %>
         </div>
       </div>
       <div class="tabs-panel" id="panel2">
