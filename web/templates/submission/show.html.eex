@@ -68,11 +68,17 @@
         </div>
       </div>
       <div class="tabs-panel" id="panel2">
-        <h4>The following ones have already received their DOI.</h4>
+        <h4>MetaData</h4>
         <div class="media-object stack-for-small">
           <div class="media-object-section">
-            <h5>Hard coded text</h5>
-            <p>Show submissions for which submission.state is :published and sort them in the descending order.</p>
+            <p>We have a metadata column in the submission table. We need to build and display it.</p>
+          </div>
+        </div>
+      </div>
+      <div class="tabs-panel" id="panel3">
+        <h4>Have you checked all the following questions that our editors had for you?</h4>
+        <div class="media-object stack-for-small">
+          <div class="media-object-section">
           </div>
         </div>
       </div>
