@@ -80,5 +80,100 @@ $highlight: $primary-color;
   }
 }
 
+//Alert Scss begins here.
+
+$alert-callout-subtle-border-left-width: rem-calc(5);
+$alert-callout-subtle-radius: 0.6rem;
+$alert-callout-subtle-large-font-scale: 150%;
+$alert-callout-subtle-small-font-scale: 80%;
+
+.alert-callout-subtle {
+  width: 50%;
+  align-content: center;
+  background: $light-gray;
+  color: $dark-gray;
+  border: 0;
+  border-left: $alert-callout-subtle-border-left-width solid $dark-gray;
+  box-shadow: 0 5px 8px -6px rgba(0,0,0, 0.2);
+
+  &.success {
+    background: $light-gray;
+    color: $dark-gray;
+    border-left: $alert-callout-subtle-border-left-width solid $success-color;
+  }
+
+  &.alert {
+    background: $light-gray;
+    color: $dark-gray;
+    border-left: $alert-callout-subtle-border-left-width solid $alert-color;
+  }
+
+  &.warning {
+    background: $light-gray;
+    color: $dark-gray;
+    border-left: $alert-callout-subtle-border-left-width solid $warning-color;
+  }
+
+  &.primary {
+    background: $light-gray;
+    color: $dark-gray;
+    border-left: $alert-callout-subtle-border-left-width solid $primary-color;
+  }
+
+  &.small {
+
+    font-size: $alert-callout-subtle-small-font-scale;
+
+    .close-button {
+      font-size: 1.5rem;
+    }
+  }
+
+  &.large {
+    font-size: $alert-callout-subtle-large-font-scale;
+
+    .close-button {
+      font-size: 3rem;
+    }
+  }
+
+  .close-button {
+    font-size: 2rem;
+    @include vertical-center;
+  }
+
+  &.radius {
+    border-radius: $alert-callout-subtle-radius;
+  }
+}
+
+// Login box
+form {
+  .form-icons {
+    text-align: center;
+
+    h4 {
+      margin-bottom: 1rem;
+    }
+
+    .input-group-label {
+      background-color: $primary-color;
+      border-color: $primary-color;
+    }
+
+    .input-group-field {
+      border-color: $primary-color;
+    }
+
+    .fa {
+      color: white;
+      width: 1rem; // makes the width of icon labels equal
+    }
+  }
+}
+
+
+
+
 
 

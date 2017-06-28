@@ -9,18 +9,24 @@
       </ul>
     </div>
   <% end %>
+  <div class="form-icons">
+    <h4>Log in to your account</h4>
 
-  <div class="form-group">
-    <label> Username </label>
-    <%= text_input f, :username, class: "form-control" %>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-user"></i>
+      </span>
+      <%= text_input f, :username, placeholder: "Username", class: "input-group-field" %>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-key"></i>
+      </span>
+      <%= password_input f, :password, placeholder: "password", class: "input-group-field"  %>
+    </div>
   </div>
 
-  <div class="form-group">
-    <label> Password </label>
-    <%= password_input f, :password, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= submit "Login", class: "btn btn-primary"%>
-  </div>
+  <%= submit "Login", class: "button expanded"%>
 <% end %>
+

@@ -1,13 +1,19 @@
 <div class="row alerts">
   <%= if flash = get_flash(@conn, :info) do %>
-    <div class="success callout alert-info" role="alert">
+    <div data-closable class="callout alert-callout-subtle success radiuss alert-info" role="alert">
       <%= flash %>
+      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+        <span aria-hidden="true">⊗</span>
+      </button>
     </div>
   <% end %>
 
   <%= if flash = get_flash(@conn, :error) do %>
-    <div class="alert callout alert-error" role="alert">
+    <div data-closable class="callout alert-callout-subtle warning radius" role="alert">
       <%= flash %>
+      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+        <span aria-hidden="true">⊗</span>
+      </button>
     </div>
   <% end %>
 </div>
